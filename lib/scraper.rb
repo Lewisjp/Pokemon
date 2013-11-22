@@ -17,7 +17,7 @@ class Scraper #base for the pokemon class
 		pokemon_temp = Array.new
 		pokemon_list = @html.search("h1").to_s().split(">").each {|x| pokemon_temp << x if x.include?("Pokémon") }
 		pokemon_temp.join.split(" ").each {|x| pokemon << x if !(x.include?("Pokémon")) }
-		pokemon.to_s
+		pokemon
 	end 
 
 	def say_name
@@ -31,5 +31,6 @@ end
 
 
 snorlax = Scraper.new("http://bulbapedia.bulbagarden.net/wiki/Snorlax_(Pok%C3%A9mon)") 
+puts snorlax.get_one_pokemon.inspect
 #from individual page
 

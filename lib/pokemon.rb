@@ -42,11 +42,11 @@ LEARNSET = Hash.new
   def gain_exp new_exp
     exp += new_exp
   end
+=end
 
   def say_name
-  	say = Array.new
-  	say[0]
+  	say = "name"
   end
-=end
+
 
 end
