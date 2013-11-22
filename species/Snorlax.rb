@@ -5,7 +5,7 @@ class Snorlax
 
 attr_accessor :type, :abilities, :catch_rate, :entry, :hp, :level, :exp, 
 
-LEARNSET - {
+LEARNSET = {
 	defense_curl => 4, # normal
 	amnesia => 9, # psychic
 	lick => 12, # ghost

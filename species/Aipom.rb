@@ -5,7 +5,7 @@ class Aipom
 
 attr_accessor :type, :abilities, :catch_rate, :entry, :hp, :level, :exp, 
 
-LEARNSET - {
+LEARNSET = {
 	scratch => 1,
 	tail_whip => 1,
 	sand_attack => 4, # Ground

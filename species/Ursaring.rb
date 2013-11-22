@@ -6,7 +6,7 @@ class Ursaring
 
 attr_accessor :type, :abilities, :catch_rate, :entry, :hp, :level, :exp, 
 
-LEARNSET - {
+LEARNSET = {
 	covet => 1,
 	scratch => 1,
 	leer => 1,
