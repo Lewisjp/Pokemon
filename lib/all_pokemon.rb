@@ -32,6 +32,9 @@ class Scraper #base for the pokemon class
 	end
 
 	def pokemon_directory
+		if address.empty?
+		 	get_pokemon_names
+		end
 		address
 	end
 
@@ -40,10 +43,10 @@ class Scraper #base for the pokemon class
 
 end 
 
-# pokedex = Scraper.new("http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number") 
+pokedex = Scraper.new("http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number") 
 
-# pokedex.get_pokemon_names
-# puts pokedex.pokemon_directory["Avalugg"] #=> "http://bulbapedia.bulbagarden.net/wiki/Avalugg_(Pok%C3%A9mon)"
+
+#puts pokedex.pokemon_directory["Avalugg"] #=> "http://bulbapedia.bulbagarden.net/wiki/Avalugg_(Pok%C3%A9mon)"
 
 
 
