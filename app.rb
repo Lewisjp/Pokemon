@@ -1,4 +1,5 @@
 require './lib/scraper.rb'
+require './lib/pokemon.rb'
 #require './lib/*'
 require 'launchy'
 
@@ -23,11 +24,20 @@ class App
 
 	end
 
+	def get_a_pokemon(selected_pokemon)
+		single_pokemone_scraper = Scraper.new("http://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number")
+		pokemon_data_hash = single_pokemone_scraper.get_one_pokemon("Slowking")
+		
+		slowking = Pokemon.new(pokemon_data_hash) #create pokemon object with hash of the pokemon type  
+		puts slowking.inspect #checks that the new object has everything 
 
+	end
 
 end
 
 
 
 pokedex = App.new
-puts pokedex.web_profile("Slowking")
+pokedex.get_a_pokemon("Slowking")
+
+#slowking = Pokemon.new(pokemon_data_hash)

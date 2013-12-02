@@ -16,12 +16,31 @@ class Scraper #base for the pokemon class
 	end
 
 
-	def get_one_pokemon
-		pokemon_temp = Array.new
-		pokemon_list = @html.search("h1").to_s().split(">").each {|x| pokemon_temp << x if x.include?("Pokémon") }
-		pokemon_temp.join.split(" ").each {|x| pokemon << x if !(x.include?("Pokémon")) }
-		pokemon
+	def get_one_pokemon(selected_pokemon)
+		poke = Hash.new  #Hash stores particular pokemone traits
+
+		if address.empty?  #makes sure the pokedex address book is accurate
+		 	get_pokemon_names
+		end
+
+		if address.has_key?(selected_pokemon) # verifies requested pokemon
+
+			pokemon_temp = Array.new
+			one_download = open("http://bulbapedia.bulbagarden.net/wiki/" + selected_pokemon + "_(Pok%C3%A9mon)")
+			one_pokemon = Nokogiri::HTML(one_download)
+			pokemon_data = one_pokemon.search("h1").to_s().split(">").each {|x| pokemon_temp << x if x.include?("Pokémon") }
+			pokemon_temp.join.split(" ").each {|x| poke[:name] = x if !(x.include?("Pokémon")) }
+
+			#pokemon_data = one_pokemon.search(a.href.title).to_s().split(">").each {|x| pokemon_temp << x if x.include?("Ability") }
+			#puts pokemon_data
+			#pokemon_temp.join.split(" ").each {|x| poke[:hp] = x if !(x.include?("Pokémon")) }
+
+		else	
+			puts "Invalid Pokemon."
+		end
+		poke
 	end 
+
 
 	def get_pokemon_names
 		all_the_pokemon = html.search('a[href$="(Pok%C3%A9mon)"]').collect {|item| item.text}.compact.keep_if { |x| x != "" }
@@ -38,9 +57,6 @@ class Scraper #base for the pokemon class
 		address
 	end
 
-	def say_name
-		puts "#{pokemon}"
-	end
 
 end 
 

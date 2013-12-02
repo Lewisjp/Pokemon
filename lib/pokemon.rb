@@ -1,13 +1,14 @@
-require './lib/*'
+
 
 class Pokemon  #in the future add inheritance from scrapper 
 
-=begin
-attr_accessor :type, :abilities, :catch_rate, :entry, :hp, :level, :exp, 
+
+attr_accessor :type, :abilities, :catch_rate, :entry, :hp, :level, :exp, :name
 
 LEARNSET = Hash.new 
 
-	def initialize
+	def initialize(pokemon_data_hash)
+		@name = pokemon_data_hash[:name] || "Mystery Pokemon"
 		@type = "normal"
 		@catch_rate = 0.0
 		@abilities = [""]
@@ -37,12 +38,13 @@ LEARNSET = Hash.new
   def level_up
     if exp > level**3
       level += 1
+  	end
   end
 
   def gain_exp new_exp
     exp += new_exp
   end
-=end
+
 
   def say_name
   	say = "name"
